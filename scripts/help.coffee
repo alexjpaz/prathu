@@ -7,7 +7,7 @@ RESPONSES = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /help/i, (msg) ->
+  robot.respond /.*help.*/i, (msg) ->
     request.get('https://api.stackexchange.com/2.2/questions?pagesize=100&order=desc&sort=activity&site=stackoverflow')
       .end (err, rsp) ->
         body = rsp.body
