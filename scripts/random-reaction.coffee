@@ -15,10 +15,11 @@ getRandomReaction = () ->
 module.exports = (robot) ->
   web = robot.adapter.client.web
   robot.hear /.*/, (res) ->
-    console.log(res.message);
     if(random(CHANCE_TO_REACT))
-      web.reactions.add(getRandomReaction(), {
-        channel: res.message.room,
-        timestamp: res.message.id,
-      })
+      setTimeout () ->
+        web.reactions.add(getRandomReaction(), {
+          channel: res.message.room,
+          timestamp: res.message.id,
+        })
+      , 500
 
