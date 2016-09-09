@@ -1,6 +1,6 @@
 random = require '../utils/random.coffee'
 
-CHANCE_TO_REACT = 0.30
+CHANCE_TO_REACT = 0.15
 
 REACTIONS = [
   'thumbsup',
