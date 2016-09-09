@@ -1,6 +1,7 @@
 random = require '../utils/random.coffee'
 
 CHANCE_TO_REACT = 0.15
+CHANCE_TO_REACT_NONSENSE = 0.05
 
 REACTIONS = [
   'thumbsup',
@@ -14,12 +15,21 @@ getRandomReaction = () ->
 
 module.exports = (robot) ->
   web = robot.adapter.client.web
-  robot.hear /.*/, (res) ->
+  robot.hear /.*/, (msg) ->
+
+    if(random(CHANCE_TO_REACT_NONSENSE))
+      web.emoji.list (err, resp) ->
+        emoji = msg.random Object.keys(resp.emoji)
+        web.reactions.add(emoji, {
+          channel: msg.message.room,
+          timestamp: msg.message.id,
+        })
+
     if(random(CHANCE_TO_REACT))
       setTimeout () ->
         web.reactions.add(getRandomReaction(), {
-          channel: res.message.room,
-          timestamp: res.message.id,
+          channel: msg.message.room,
+          timestamp: msg.message.id,
         })
       , 500
 
