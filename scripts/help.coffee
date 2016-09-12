@@ -1,5 +1,7 @@
 request = require 'superagent'
 
+random = require '../utils/random.coffee'
+
 RESPONSES = [
   "I found this  ",
   "I remember finding an article on about this very thing ",
@@ -19,13 +21,17 @@ respondWithArticle = (msg) ->
 
 
 module.exports = (robot) ->
+  robot.respond /.*/i, (msg) ->
+    if(random(0.01))
+      msg.send '¯\_(ツ)_/¯'
+
   robot.respond /.*(help|what do you know|what can you tell me about|do you have).*/i, (msg) ->
     respondWithArticle(msg)
 
-robot.respond /.*help.*/i, (msg) ->
-    if(msg.message.room == MARS_TEAM_PRIVATE_CHANNEL_ID)
+  robot.hear /.*help.*/i, (msg) ->
+    if(random(0.05) && msg.message.room == MARS_TEAM_PRIVATE_CHANNEL_ID)
       respondWithArticle(msg)
 
-  robot.respond /.*\?$/i, (msg) ->
-    if(msg.message.room == MARS_TEAM_PRIVATE_CHANNEL_ID)
+  robot.hear /.*\?$/i, (msg) ->
+    if(random(0.05) && msg.message.room == MARS_TEAM_PRIVATE_CHANNEL_ID)
       respondWithArticle(msg)
