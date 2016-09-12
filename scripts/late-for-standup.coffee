@@ -2,7 +2,7 @@ HubotCron = require 'hubot-cronjob'
 
 random = require '../utils/random.coffee'
 
-CHANCE_TO_BE_LATE = 0.15
+CHANCE_TO_BE_LATE = 0.05
 CHANNEL_ID = 'G0JUTJYCV'
 
 module.exports = (robot) ->
