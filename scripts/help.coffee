@@ -29,7 +29,7 @@ module.exports = (robot) ->
     respondWithArticle(msg)
 
   robot.hear /.*help.*/i, (msg) ->
-    if(random(0.05) && msg.message.room == MARS_TEAM_PRIVATE_CHANNEL_ID)
+    if(random(0.05) && msg.message.room)
       respondWithArticle(msg)
 
   robot.hear /.*\?$/i, (msg) ->
