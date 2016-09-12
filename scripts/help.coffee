@@ -22,6 +22,10 @@ module.exports = (robot) ->
   robot.respond /.*(help|what do you know|what can you tell me about|do you have).*/i, (msg) ->
     respondWithArticle(msg)
 
-  robot.respond /\?$/i, (msg) ->
+robot.respond /.*help.*/i, (msg) ->
+    if(msg.message.room == MARS_TEAM_PRIVATE_CHANNEL_ID)
+      respondWithArticle(msg)
+
+  robot.respond /.*\?$/i, (msg) ->
     if(msg.message.room == MARS_TEAM_PRIVATE_CHANNEL_ID)
       respondWithArticle(msg)
