@@ -27,6 +27,9 @@ module.exports = (robot) ->
 
   robot.respond /.*(help|what do you know|what can you tell me about|do you have).*/i, (msg) ->
     respondWithArticle(msg)
+    
+  robot.respond /.*\?$/i, (msg) ->
+      respondWithArticle(msg)
 
   robot.hear /.*help.*/i, (msg) ->
     if(random(0.05) && msg.message.room)
@@ -35,3 +38,5 @@ module.exports = (robot) ->
   robot.hear /.*\?$/i, (msg) ->
     if(random(0.05) && msg.message.room == MARS_TEAM_PRIVATE_CHANNEL_ID)
       respondWithArticle(msg)
+      
+
