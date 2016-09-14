@@ -2,7 +2,12 @@ request = require 'superagent'
 
 random = require '../utils/random.coffee'
 
-RESPONSES = [
+DIRECT_RESPONSES = [
+  '`¯\_(ツ)_/¯`',
+  'Let me get back to you on that',
+];
+
+QUESTION_RESPONSES = [
   "I found this  ",
   "I remember finding an article on about this very thing ",
   "Maybe this can help ",
@@ -15,15 +20,15 @@ respondWithArticle = (msg) ->
     .end (err, rsp) ->
       body = rsp.body
       item = msg.random body.items
-      text = msg.random RESPONSES
+      text = msg.random QUESTION_RESPONSES
       msg.send text+item.link
 
 
 
 module.exports = (robot) ->
   robot.respond /.*/i, (msg) ->
-    if(random(0.01))
-      msg.send '¯\_(ツ)_/¯'
+    if(random(0.05))
+      msg.send msg.random DIRECT_RESPONSES
 
   robot.respond /.*(help|what do you know|what can you tell me about|do you have).*/i, (msg) ->
     respondWithArticle(msg)
