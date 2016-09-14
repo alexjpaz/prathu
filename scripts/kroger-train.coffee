@@ -10,7 +10,7 @@ random = require '../utils/random.coffee'
 module.exports = (robot) ->
   web = robot.adapter.client.web
 
-  new HubotCron '* 11 * * 1-5', 'America/New_York', () ->
+  new HubotCron '30 11 * * 1-5', 'America/New_York', () ->
     if(random(CHANCE_TO_BE_DO_KROGER))
       web = robot.adapter.client.web
       web.chat.postMessage(KROGER_TRAIN_CHANNELID, "@here :kroger:?", {
