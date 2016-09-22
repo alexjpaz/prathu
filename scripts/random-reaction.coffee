@@ -1,6 +1,6 @@
 random = require '../utils/random.coffee'
 
-CHANCE_TO_REACT = 0.15
+CHANCE_TO_REACT = 0.10
 CHANCE_TO_REACT_NONSENSE = 0.05
 
 REACTIONS = [
