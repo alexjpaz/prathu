@@ -3,7 +3,8 @@ request = require 'superagent'
 random = require '../utils/random.coffee'
 
 DIRECT_RESPONSES = [
-  '`¯\_(ツ)_/¯`',
+  '`._.`',
+  '`¯\\_(ツ)_/¯`',
   'Let me get back to you on that',
 ];
 
