@@ -25,7 +25,7 @@ module.exports = (robot) ->
           timestamp: msg.message.id,
         })
 
-    if(random(CHANCE_TO_REACT))
+    else if(random(CHANCE_TO_REACT))
       setTimeout () ->
         web.reactions.add(getRandomReaction(), {
           channel: msg.message.room,
