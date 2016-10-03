@@ -15,6 +15,25 @@ getRandomReaction = () ->
 
 module.exports = (robot) ->
   web = robot.adapter.client.web
+
+robot.respond /opinion/i, (msg) ->
+
+    if(random(0.3))
+      web.emoji.list (err, resp) ->
+        emoji = msg.random Object.keys(resp.emoji)
+        web.reactions.add(emoji, {
+          channel: msg.message.room,
+          timestamp: msg.message.id,
+        })
+
+    else
+      web.reactions.add(getRandomReaction(), {
+        channel: msg.message.room,
+        timestamp: msg.message.id,
+      })
+
+
+
   robot.hear /.*/, (msg) ->
 
     if(random(CHANCE_TO_REACT_NONSENSE))
