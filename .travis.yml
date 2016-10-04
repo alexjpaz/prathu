@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+language: bash
+install: make
+skip_cleanup: true
+script: make _test
+on:
+  repo: alexjpaz/prathu
