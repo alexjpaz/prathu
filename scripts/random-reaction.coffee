@@ -13,41 +13,27 @@ REACTIONS = [
 getRandomReaction = () ->
   return REACTIONS[Math.floor(Math.random()*REACTIONS.length)]
 
-module.exports = (robot) ->
-  web = robot.adapter.client.web
-
-  robot.respond /(opinion|should (i|we)|do you like)/i, (msg) ->
-    if(random(0.3))
-      web.emoji.list (err, resp) ->
-        emoji = msg.random Object.keys(resp.emoji)
-        web.reactions.add(emoji, {
-          channel: msg.message.room,
-          timestamp: msg.message.id,
-        })
-
-    else
-      web.reactions.add(getRandomReaction(), {
+reaction = (chanceRandom, chanceNormal) ->
+  if(random(chanceRandom))
+    web.emoji.list (err, resp) ->
+      emoji = msg.random Object.keys(resp.emoji)
+      web.reactions.add(emoji, {
         channel: msg.message.room,
         timestamp: msg.message.id,
       })
 
+  else if(random(chanceNormal))
+    web.reactions.add(getRandomReaction(), {
+      channel: msg.message.room,
+      timestamp: msg.message.id,
+    })
 
+
+module.exports = (robot) ->
+  web = robot.adapter.client.web
+
+  robot.respond /(opinion|should (i|we)|do you like)/i, (msg) ->
+    reaction(0.3, 1.0)
 
   robot.hear /.*/, (msg) ->
-
-    if(random(CHANCE_TO_REACT_NONSENSE))
-      web.emoji.list (err, resp) ->
-        emoji = msg.random Object.keys(resp.emoji)
-        web.reactions.add(emoji, {
-          channel: msg.message.room,
-          timestamp: msg.message.id,
-        })
-
-    else if(random(CHANCE_TO_REACT))
-      setTimeout () ->
-        web.reactions.add(getRandomReaction(), {
-          channel: msg.message.room,
-          timestamp: msg.message.id,
-        })
-      , 500
-
+    reaction(CHANCE_TO_REACT_NONSENSE, CHANCE_TO_REACT)
