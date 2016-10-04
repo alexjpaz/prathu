@@ -16,8 +16,7 @@ getRandomReaction = () ->
 module.exports = (robot) ->
   web = robot.adapter.client.web
 
-robot.respond /opinion/i, (msg) ->
-
+  robot.respond /opinion/i, (msg) ->
     if(random(0.3))
       web.emoji.list (err, resp) ->
         emoji = msg.random Object.keys(resp.emoji)
