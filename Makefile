@@ -1,2 +1,2 @@
 _test:
-  docker build -t t .
+	docker build -t t .
