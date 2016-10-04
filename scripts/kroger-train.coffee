@@ -8,7 +8,12 @@ CHANCE_TO_DO_WAIT_UP = 0.01
 random = require '../utils/random.coffee'
 
 module.exports = (robot) ->
-  web = robot.adapter.client.web
+
+  if(robot.adapter.client)
+    web = robot.adapter.client.web
+  else
+    robot.logger.info "Web client not found"
+    return {}
 
   new HubotCron '30 11 * * 1-5', 'America/New_York', () ->
     if(random(CHANCE_TO_BE_DO_KROGER))

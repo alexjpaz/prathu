@@ -17,7 +17,11 @@ getRandomReaction = () ->
 
 
 module.exports = (robot) ->
-  web = robot.adapter.client.web
+  if(robot.adapter.client)
+    web = robot.adapter.client.web
+  else
+    robot.logger.info "Web client not found"
+    return {}
 
   reaction = (robot, msg, chanceRandom, chanceNormal) ->
     if(random(chanceRandom))

@@ -9,6 +9,8 @@ ADD external-scripts.json /hubot/
 
 ADD scripts/ /hubot/scripts/
 
+ADD utils/ /hubot/utils/
+
 ADD test/ /hubot/test
 RUN npm test
 
