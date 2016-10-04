@@ -2,8 +2,7 @@ sudo: required
 services:
   - docker
 language: bash
-install: make
+install: make _test
 skip_cleanup: true
-script: make _test
 on:
   repo: alexjpaz/prathu
