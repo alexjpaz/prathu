@@ -27,5 +27,5 @@ respondWithArticle = (msg) ->
 
 
 module.exports = (robot) ->
-  robot.respond /(help|what do you know|what can you tell me about|do you have|tips|advice)/i, (msg) ->
+  robot.respond /(help|what do you know|what can you tell me about|do you have|tips|advice|what is)/i, (msg) ->
     respondWithArticle(msg)
