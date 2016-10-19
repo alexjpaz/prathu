@@ -1,5 +1,10 @@
 random = require '../utils/random.coffee'
 
+USER_NAMES_ID = {
+  KEL: 'U07EZV1V1'
+  PAZ: 'U07EZTER2'
+}
+
 CHANCE_TO_REACT = 0.15
 CHANCE_TO_REACT_NONSENSE = 0.05
 
@@ -43,5 +48,13 @@ module.exports = (robot) ->
     reaction(robot, msg, 0.3, 1.0)
 
   robot.hear /.*/, (msg) ->
+    if msg.message.user.id == USER_NAMES_ID.KEL
+      web.reactions.add('thumbsup', {
+        channel: msg.message.room,
+        timestamp: msg.message.id,
+      })
+
+  robot.hear /.*/, (msg) ->
     robot.logger.info("Testing react")
+    robot.logger.info("Message" + JSON.stringify(msg.message))
     reaction(robot, msg, CHANCE_TO_REACT_NONSENSE, CHANCE_TO_REACT)
