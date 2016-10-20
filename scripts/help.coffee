@@ -24,11 +24,6 @@ respondWithArticle = (msg) ->
       text = msg.random QUESTION_RESPONSES
       msg.send text+item.link
 
-
-module.exports = (robot) ->
-  robot.response /give me .* id/i, (msg) ->
-    msg.send new Date().getTime()
-
 module.exports = (robot) ->
   robot.respond /.*(help|what do you know|what can you tell me about|do you have|tips|advice|what is).*/i, (msg) ->
     respondWithArticle(msg)
