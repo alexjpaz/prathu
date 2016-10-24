@@ -22,7 +22,6 @@ getRandomReaction = () ->
 
 
 module.exports = (robot) ->
-  return // TOOD: temp
   if(robot.adapter.client)
     web = robot.adapter.client.web
   else
@@ -45,6 +44,7 @@ module.exports = (robot) ->
       })
 
   robot.respond /(opinion|should (i|we)|do you like)/i, (msg) ->
+    return // TEMP
     robot.logger.info("Testing react direct")
     reaction(robot, msg, 0.3, 1.0)
 
@@ -56,6 +56,7 @@ module.exports = (robot) ->
       })
 
   robot.hear /.*/, (msg) ->
+    return // TEMP
     robot.logger.info("Testing react")
     robot.logger.info("Message" + JSON.stringify(msg.message))
     reaction(robot, msg, CHANCE_TO_REACT_NONSENSE, CHANCE_TO_REACT)
