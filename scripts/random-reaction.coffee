@@ -22,6 +22,7 @@ getRandomReaction = () ->
 
 
 module.exports = (robot) ->
+  return // TOOD: temp
   if(robot.adapter.client)
     web = robot.adapter.client.web
   else
