@@ -50,7 +50,7 @@ module.exports = (robot) ->
 
   robot.hear /.*/, (msg) ->
     if msg.message.user.id == USER_NAMES_ID.KEL
-      web.reactions.add('thumbsup', {
+      web.reactions.add('kel-cecil', {
         channel: msg.message.room,
         timestamp: msg.message.id,
       })
