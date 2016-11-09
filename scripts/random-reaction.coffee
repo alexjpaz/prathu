@@ -43,8 +43,7 @@ module.exports = (robot) ->
         timestamp: msg.message.id,
       })
 
-  robot.respond /(opinion|should (i|we)|do you like)/i, (msg) ->
-    robot.logger.info("Testing react direct")
+  robot.respond /(opinion|should (i|we)|do you like|you feel)/i, (msg) ->
     reaction(robot, msg, 0.3, 1.0)
 
   robot.hear /.*/, (msg) ->
