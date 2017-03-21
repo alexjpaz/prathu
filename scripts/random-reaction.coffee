@@ -1,7 +1,7 @@
 random = require '../utils/random.coffee'
 
 USER_NAMES_ID = {
-  KEL: 'U07EZV1V1'
+  KEL: 'U3MHSFYES'
   PAZ: 'U07EZTER2'
 }
 
@@ -48,7 +48,7 @@ module.exports = (robot) ->
 
   robot.hear /.*/, (msg) ->
     if msg.message.user.id == USER_NAMES_ID.KEL
-      web.reactions.add('kel-cecil', {
+      web.reactions.add('koolkat', {
         channel: msg.message.room,
         timestamp: msg.message.id,
       })
