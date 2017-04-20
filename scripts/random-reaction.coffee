@@ -17,9 +17,7 @@ REACTIONS = [
 
 getRandomReaction = () ->
   return REACTIONS[Math.floor(Math.random()*REACTIONS.length)]
-
-
-
+  
 
 module.exports = (robot) ->
   if(robot.adapter.client)
