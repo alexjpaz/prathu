@@ -7,7 +7,7 @@ slack_it = (robot, res, title, text) ->
       fallback: text
 
 module.exports = (robot) ->
-  robot.hear /(heck|borf|bother|frighten)/i, (msg) ->
+  robot.hear /^(heck|borf|bother|frighten)$/i, (msg) ->
     robot.http('https://g4vlcenksd.execute-api.us-east-1.amazonaws.com/prod/heck')
       .post() (err, res, body) ->
         text = JSON.parse(body).text
