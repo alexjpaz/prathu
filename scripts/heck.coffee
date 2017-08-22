@@ -1,8 +1,9 @@
 module.exports = (robot) ->
   [
     /doggo/i,
-    /^heck$/i
-    /^bork/i
+    /^heck$/i,
+    /^heck off$/i,
+    /^bork/i,
     /^borf/i,
     /^bjork/i,
     /frighten/i,
