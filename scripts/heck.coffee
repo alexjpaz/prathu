@@ -2,6 +2,7 @@ module.exports = (robot) ->
   [
     /doggo/i,
     /^heck$/i,
+    /send halp pls/i,
     /stop it fren/,
     /doing me a concern/,
     /blep/,
