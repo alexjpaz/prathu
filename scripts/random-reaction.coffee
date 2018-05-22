@@ -3,6 +3,7 @@ random = require '../utils/random.coffee'
 USER_NAMES_ID = {
   KEL: 'U3MHSFYES'
   PAZ: 'U07EZTER2'
+  DAVE: 'U9BAFK7CY'
 }
 
 CHANCE_TO_REACT = 0.15
@@ -47,8 +48,8 @@ module.exports = (robot) ->
     reaction(robot, msg, 0.3, 1.0)
 
   robot.hear /.*/, (msg) ->
-    if msg.message.user.id == USER_NAMES_ID.KEL
-      web.reactions.add('koolkat', {
+    if msg.message.user.id == USER_NAMES_ID.DAVE
+      web.reactions.add('thumbsdown', {
         channel: msg.message.room,
         timestamp: msg.message.id,
       })
