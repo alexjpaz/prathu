@@ -49,7 +49,7 @@ module.exports = (robot) ->
 
   robot.hear /.*/, (msg) ->
     if msg.message.user.id == USER_NAMES_ID.DAVE
-      web.reactions.add('facepalm', {
+      web.reactions.add('bat', {
         channel: msg.message.room,
         timestamp: msg.message.id,
       })
