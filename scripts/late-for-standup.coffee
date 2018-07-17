@@ -3,7 +3,7 @@ HubotCron = require 'hubot-cronjob'
 random = require '../utils/random.coffee'
 
 CHANCE_TO_BE_LATE = 0.05
-CHANNEL_ID = 'G0JUTJYCV'
+CHANNEL_ID = 'C09QS3HDX'
 
 module.exports = (robot) ->
   new HubotCron '15 9 * * 1-5', 'America/New_York', () ->
