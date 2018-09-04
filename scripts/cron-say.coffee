@@ -4,16 +4,16 @@ MARS_TEAM_PRIVATE_CHANNELID='G0JUTJYCV'
 
 random = require '../utils/random.coffee'
 
-cron = (crondef, chance, say) ->
- new HubotCron crondef, 'America/New_York', () ->
-    if(random(chance))
-      web = robot.adapter.client.web
-      web.chat.postMessage(MARS_TEAM_PRIVATE_CHANNELID, say, {
-        link_names: 1
-        as_user: 1
-      })
-
 module.exports = (robot) ->
+  cron = (crondef, chance, say) ->
+   new HubotCron crondef, 'America/New_York', () ->
+      if(random(chance))
+        web = robot.adapter.client.web
+        web.chat.postMessage(MARS_TEAM_PRIVATE_CHANNELID, say, {
+          link_names: 1
+          as_user: 1
+        })
+
   cron '15 9 * * 1-5', 0.05, '@here is dev down?'
   cron '15 9 * * 1-5', 0.05, 'docs controllo'
   cron '15 9 * * 1-5', 0.05, 'Can someone you look at https://jira.move.com/browse/ADVP-'+Math.floor(Math.random() * (9000 - 1000 + 1)) + 9000
