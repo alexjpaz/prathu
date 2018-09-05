@@ -6,10 +6,10 @@ CHANCE_TO_BE_LATE = 0.05
 CHANNEL_ID = 'G0JUTJYCV'
 
 MESSAGES = [
-    '@here Hey team - I'm going to stop at Timmy's next door. Send me your orders.',
-    '@here Hey team - I'm going to be late for standup since I'm stuck in traffic. I'll try to get there as fast as I can.',
-    '@here Sorry, but I will be late for standup since I got stung by some bees yesterday and it hurts to sit. Go ahead and start without me.',
-    '@here Hey team I have a diaherrea tonight , please start standup without me. :freshpoop:',
+    "@here Hey team - I"m going to stop at Timmy"s next door. Send me your orders.",
+    "@here Hey team - I"m going to be late for standup since I"m stuck in traffic. I"ll try to get there as fast as I can.",
+    "@here Sorry, but I will be late for standup since I got stung by some bees yesterday and it hurts to sit. Go ahead and start without me.",
+    "@here Hey team I have a diaherrea tonight , please start standup without me. :freshpoop:",
 ]
 
 module.exports = (robot) ->
