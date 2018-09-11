@@ -14,11 +14,11 @@ module.exports = (robot) ->
           as_user: 1
         })
 
-  cron '15 9 * * 1-5', 0.05, '@here is dev down?'
-  cron '15 9 * * 1-5', 0.05, 'docs controllo'
-  cron '15 9 * * 1-5', 0.05, 'Can someone you look at https://jira.move.com/browse/ADVP-'+Math.floor(Math.random() * (9000 - 1000 + 1)) + 9000
-  cron '15 9 * * 1-5', 0.05, 'corrrelation id 6fe3b18d-b24a-45b7-85f6-caec586d73de on prod'
-  cron '15 9 * * 1-5', 0.05, 'deploying profile api to prod'
-  cron '15 9 * * 1-5', 0.05, "Is anyone using `dashboard.tphub.moveaws.com? I'm going to delete it."
-  cron '15 9 * * 1-5', 0.05, "fucking controllo"
-  cron '15 9 * * 1-5', 0.05, "bees"
+  cron '15 9 * * 1-5', 0.01, '@here is dev down?'
+  cron '15 9 * * 1-5', 0.01, 'docs controllo'
+  cron '15 9 * * 1-5', 0.01, 'Can someone you look at https://jira.move.com/browse/ADVP-'+Math.floor(Math.random() * (9000 - 1000 + 1)) + 9000
+  cron '15 9 * * 1-5', 0.01, 'corrrelation id 6fe3b18d-b24a-45b7-85f6-caec586d73de on prod'
+  cron '15 9 * * 1-5', 0.01, 'deploying profile api to prod'
+  cron '15 9 * * 1-5', 0.01, "Is anyone using `dashboard.tphub.moveaws.com? I'm going to delete it."
+  cron '15 9 * * 1-5', 0.01, "fucking controllo"
+  cron '15 9 * * 1-5', 0.01, "bees"
