@@ -21,4 +21,3 @@ module.exports = (robot) ->
   cron '15 9 * * 1-5', 0.01, 'deploying profile api to prod'
   cron '15 9 * * 1-5', 0.01, "Is anyone using `dashboard.tphub.moveaws.com? I'm going to delete it."
   cron '15 9 * * 1-5', 0.01, "fucking controllo"
-  cron '15 9 * * 1-5', 0.01, "bees"
