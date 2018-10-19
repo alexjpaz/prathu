@@ -1,5 +1,9 @@
 module.exports = (robot) ->
   [
+    /y fren/i,
+    /y friend/i,
+    /why friend/i,
+    /halp/i,
     /doggo/i,
     /^heck$/i,
     /send halp pls/i,
