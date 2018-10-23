@@ -4,6 +4,7 @@ module.exports = (robot) ->
     /y friend/i,
     /why friend/i,
     /halp/i,
+    /heck/i,
     /doggo/i,
     /^heck$/i,
     /send halp pls/i,
