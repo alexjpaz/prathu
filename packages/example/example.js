@@ -1,4 +1,3 @@
-console.log(123)
-modules.exports = (robot) => {
+module.exports = (robot) => {
   console.log('example');
 };

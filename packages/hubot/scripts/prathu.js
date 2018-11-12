@@ -1,5 +1,5 @@
 module.exports = async (robot) => {
-  const promises = [
+  const plugins = [
     'prathu-example'
   ];
 
