@@ -5,4 +5,8 @@ set -e
 #npm install
 export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
+export HUBOT_S3_BRAIN_ACCESS_KEY_ID=${HUBOT_S3_BRAIN_ACCESS_KEY_ID:-none}
+export HUBOT_S3_BRAIN_SECRET_ACCESS_KEY=${HUBOT_S3_BRAIN_SECRET_ACCESS_KEY:-none}
+export HUBOT_S3_BRAIN_BUCKET=${HUBOT_S3_BRAIN_BUCKET:-none}
+
 exec node_modules/.bin/hubot --name "prathu" "$@"
