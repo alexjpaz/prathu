@@ -10,9 +10,6 @@
     "test:hubot": "bin/hubot -t"
   },
   "dependencies": {
-    "prathu-example": "*",
-    "prathu-poem": "*",
-    "prathu-reaction": "*",
     "hubot": "^2.19.0",
     "hubot-cronjob": "^0.2.1",
     "hubot-diagnostics": "0.0.1",
@@ -27,6 +24,9 @@
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^4.0.2",
+    "prathu-example": "*",
+    "prathu-poem": "*",
+    "prathu-reaction": "*",
     "superagent": "^2.2.0"
   }
 }
