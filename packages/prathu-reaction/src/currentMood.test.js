@@ -15,7 +15,7 @@ describe('currentMood', () => {
   });
 
   it('should display html', async () => {
-    await request.get('/plugin/reaction/current-mood')
+    await request.get('/current-mood')
       .expect(200, /prathu-reaction/)
   });
 
@@ -35,7 +35,7 @@ describe('currentMood', () => {
 
     let request = supertest(app);
 
-    await request.get('/plugin/reaction/current-mood.json')
+    await request.get('/current-mood.json')
       .expect(200, {
         mood
       })

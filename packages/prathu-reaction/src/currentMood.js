@@ -1,7 +1,7 @@
 module.exports = (app, options = {}) => {
   const { moodSupplier } = options;
 
-  app.get('/plugin/reaction/current-mood', (req, res) => {
+  app.get('/current-mood', (req, res) => {
     res.end(`
     <html>
       <body id='prathu-reaction'>
@@ -10,7 +10,7 @@ module.exports = (app, options = {}) => {
   `);
   });
 
-  app.get('/plugin/reaction/current-mood.json', (req, res) => {
+  app.get('/current-mood.json', (req, res) => {
     res.send({
       mood: moodSupplier()
     })
