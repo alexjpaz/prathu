@@ -1,53 +1,62 @@
-const { assert } = require('chai');
+const { expect } = require('chai');
 
 const sinon = require('sinon');
 
-const randomReaction = require('./random-reaction');
+const { RandomReactionHandler } = require('./random-reaction');
 
-xdescribe('random-reaction', () => {
-  it('should add hear/respond', () => {
-    const robot = {
-      respond: sinon.spy(),
-      hear: sinon.spy(),
-      adapter: {
-        client: {
-          web: {}
-        }
-      }
+describe('random-reaction', () => {
+  it('should update store and add reaction', () => {
+    const slackWebClient = { };
+    slackWebClient.reactions = { };
+    slackWebClient.reactions.add = sinon.stub();
+
+    const store = {
+      set: sinon.stub()
     };
 
-    randomReaction(robot);
+    const r = new RandomReactionHandler({
+      store,
+      slackWebClient
+    });
 
-    assert.isOk(robot.respond.called);
-    assert.isOk(robot.hear.called);
+    r.addReaction("foo", "bar", "123");
+
+    expect(store.set.called).to.be.true;
+    expect(store.set.calledWith("prathu-reaction.addReaction.emoji", "foo")).to.be.true;
+
+    expect(slackWebClient.reactions.add.called).to.be.true;
+    expect(slackWebClient.reactions.add.calledWith("foo", {
+      channel: "bar",
+      timestamp: "123"
+    })).to.be.true;
   });
 
-  xit('should react', () => {
-    const robot = {
-      respond: sinon.spy(),
-      hear: sinon.spy(),
-      adapter: {
-        client: {
-          web: {
-            emoji: {
-              list: sinon.stub().yields(null, {
-                emoji: {
-                  foo: "bar"
-                }
-              })
-            }
-          }
-        }
-      }
-    };
+  it('should do random', () => {
+    const r = new RandomReactionHandler({
+    });
 
-    const ex = randomReaction(robot);
+    const boolean = r.random(1);
 
-    sinon.spy(ex.addReaction);
+    expect(typeof boolean).to.eql('number');
+    expect(boolean === 0 || boolean === 1).to.eql(true);
 
-    ex.reaction(robot, {}, 0, 1);
-
-    assert.isOk(robot.adapter.client.web.emoji.list.called);
   });
 
+  it('reaction should call random', () => {
+    const r = new RandomReactionHandler({});
+
+    sinon.spy(r, "random");
+
+    r.reaction(null, 0, 0);
+
+    expect(r.random.calledOnce).to.be.true;
+    expect(r.random.calledWith(0)).to.be.true;
+
+    r.random.resetHistory();
+
+    r.reaction(null, 0, 0);
+
+    expect(r.random.calledTwice).to.be.true;
+    expect(r.random.calledWith(0)).to.be.true;
+  });
 });
