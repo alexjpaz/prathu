@@ -1,8 +1,10 @@
+const emojiMap = require('./emojiMap');
+
 const resolveEmoji = (key, emojis) => {
   let url = emojis[key];
 
   if(!url) {
-    return key;
+    return emojiMap[key];
   }
 
   if(url.startsWith('alias:')) {

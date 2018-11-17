@@ -29,4 +29,9 @@ describe('resolveEmoji', () => {
     expect(url).to.eql("👍");
   });
 
+  it('should resolve unknown', () => {
+    const url = resolveEmoji("unknown", {});
+
+    expect(url).to.eql(undefined);
+  });
 });
