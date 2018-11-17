@@ -21,4 +21,12 @@ describe('resolveEmoji', () => {
 
     expect(url).to.eql("http://bar.com");
   });
+
+  it('should resolve to unicode emoji', () => {
+
+    const url = resolveEmoji("+1", {});
+
+    expect(url).to.eql("👍");
+  });
+
 });
