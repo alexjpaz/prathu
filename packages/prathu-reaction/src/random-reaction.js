@@ -25,29 +25,44 @@ module.exports = function(robot) {
     return {};
   }
 
+  const addReaction = (emoji, channel, timestamp) => {
+    web.reactions.add(emoji, {
+      channel: msg.message.room,
+      timestamp: msg.message.id,
+    });
+
+    robot.brain.set("prathu-reaction.addReaction.emoji", emoji);
+  };
+
   const reaction = function(robot, msg, chanceRandom, chanceNormal) {
     if(random(chanceRandom)) {
       return web.emoji.list(function(err, resp) {
         const emoji = msg.random(Object.keys(resp.emoji));
-        return web.reactions.add(emoji, {
-          channel: msg.message.room,
-          timestamp: msg.message.id,
-        });
-      });
 
-    } else if(random(chanceNormal)) {
-      return web.reactions.add(getRandomReaction(), {
-        channel: msg.message.room,
-        timestamp: msg.message.id,
+        addReaction(emoji, msg.message.room, msg.message.id);
+        return;
       });
+    } else if(random(chanceNormal)) {
+      const emoji = getRandomReaction();
+      addReaction(emoji, msg.message.room, msg.message.id);
+      return;
     }
   };
 
-  robot.respond(/.*(opinion|should (i|we)|do you like|you feel).*/i, msg => reaction(robot, msg, 0.3, 1.0));
+  robot.respond(/.*(opinion|should (i|we)|do you like|you feel).*/i, (msg) => {
+    reaction(robot, msg, 0.3, 1.0);
+  });
 
-  return robot.hear(/.*/, function(msg) {
+  robot.hear(/.*/, function(msg) {
     robot.logger.info("Testing react");
     robot.logger.info(`Message${JSON.stringify(msg.message)}`);
     return reaction(robot, msg, CHANCE_TO_REACT_NONSENSE, CHANCE_TO_REACT);
   });
+
+  // TODO
+  return {
+    setCurrentMood,
+    addReaction,
+    reaction
+  };
 };

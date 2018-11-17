@@ -11,6 +11,12 @@ module.exports = (robot) => {
     })
   };
 
+  // TODO
+  const reaction = (msg, chance_random, chance_normal) => {
+  };
+
   currentMood(app, options);
-  chat(robot);
+  chat(robot, {
+    reaction
+  });
 };

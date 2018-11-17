@@ -1,4 +1,5 @@
 module.exports = (app, options = {}) => {
+  // robot.brain.get("prathu-reaction.addReaction.emoji") || "";
   const { moodSupplier } = options;
 
   app.get('/current-mood', (req, res) => {
