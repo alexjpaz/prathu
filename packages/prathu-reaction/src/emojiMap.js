@@ -1,4 +1,4 @@
-// Generated Fri Nov 16 2018 20:30:57 GMT-0500 (Eastern Standard Time) 
+// Generated Fri Nov 16 2018 20:40:51 GMT-0500 (Eastern Standard Time) 
 module.exports = {
   "100": "💯",
   "1234": "🔢",
