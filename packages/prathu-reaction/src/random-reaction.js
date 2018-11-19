@@ -43,7 +43,9 @@ class RandomReactionHandler {
   async reactionRandom(msg) {
     const resp = await this.slackWebClient.emoji.list();
 
-    const emoji = msg.random(Object.keys(resp.emoji));
+    const items = Object.keys(resp.emoji);
+
+    const emoji = items[Math.floor(Math.random() * items.length)]
 
     this.addReaction(emoji, msg.message.room, msg.message.id);
   }
@@ -60,42 +62,4 @@ class RandomReactionHandler {
 
 module.exports = {
   RandomReactionHandler
-};
-
-
-const f = () => {
-  return new RandomReactionHandler(options);
-
-
-
-  const addReaction = (emoji, channel, timestamp) => {
-    web.reactions.add(emoji, {
-      channel: msg.message.room,
-      timestamp: msg.message.id,
-    });
-
-    robot.brain.set("prathu-reaction.addReaction.emoji", emoji);
-  };
-
-  const reaction = function(robot, msg, chanceRandom, chanceNormal) {
-    if(random(chanceRandom)) {
-      return web.emoji.list(function(err, resp) {
-        const emoji = msg.random(Object.keys(resp.emoji));
-
-        addReaction(emoji, msg.message.room, msg.message.id);
-        return;
-      });
-    } else if(random(chanceNormal)) {
-      const emoji = getRandomReaction();
-      addReaction(emoji, msg.message.room, msg.message.id);
-      return;
-    }
-  };
-
-  // TODO
-  return {
-    setCurrentMood,
-    addReaction,
-    reaction
-  };
 };
