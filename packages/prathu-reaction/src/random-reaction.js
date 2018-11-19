@@ -1,11 +1,4 @@
-const REACTIONS = [
-  'thumbsup',
-  'thumbsdown',
-  'simple_smile',
-  'disappointed'
-];
-
-const getRandomReaction = () => REACTIONS[Math.floor(Math.random()*REACTIONS.length)];
+const { promisify } = require('util');
 
 class RandomReactionHandler {
   constructor({ store, slackWebClient }) {
@@ -21,14 +14,38 @@ class RandomReactionHandler {
   reaction(msg, chanceRandom, chanceNormal) {
     if(this.random(chanceRandom)) {
       // React with a random emoji
-
+      this.reactionRandom(msg);
       return;
     }
 
     if(this.random(chanceNormal)) {
+      this.reactionNormal(msg);
       // React with a normal emoji
       return;
     }
+  }
+
+  reactionNormal(msg) {
+    const REACTIONS = [
+      'thumbsup',
+      'thumbsdown',
+      'simple_smile',
+      'disappointed'
+    ];
+
+    const getRandomReaction = () => REACTIONS[Math.floor(Math.random()*REACTIONS.length)];
+
+    const emoji = getRandomReaction();
+
+    return this.addReaction(emoji, msg.message.room, msg.message.id);
+  }
+
+  async reactionRandom(msg) {
+    const resp = await this.slackWebClient.emoji.list();
+
+    const emoji = msg.random(Object.keys(resp.emoji));
+
+    this.addReaction(emoji, msg.message.room, msg.message.id);
   }
 
   addReaction(emoji, channel, timestamp) {

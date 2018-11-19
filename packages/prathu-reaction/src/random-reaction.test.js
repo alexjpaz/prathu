@@ -42,7 +42,7 @@ describe('random-reaction', () => {
 
   });
 
-  it('reaction should call random', () => {
+  xit('reaction should call random', () => {
     const r = new RandomReactionHandler({});
 
     sinon.spy(r, "random");
@@ -58,5 +58,61 @@ describe('random-reaction', () => {
 
     expect(r.random.calledTwice).to.be.true;
     expect(r.random.calledWith(0)).to.be.true;
+  });
+
+  it('shouold react with a normal emoji', () => {
+    const r = new RandomReactionHandler({ });
+
+    r.addReaction = sinon.stub();
+
+    const msg = {
+      message: {
+        room: "1",
+        id: "2"
+      }
+    };
+
+    r.reactionNormal(msg);
+
+    expect(r.addReaction.called).to.be.true;
+    expect(r.addReaction.calledWith(sinon.match.any, msg.message.room, msg.message.id)).to.be.true;
+  });
+
+  it('shouold react with a random emoji', async () => {
+    const list = sinon.spy(() => {
+      return {
+        emoji: {
+          foo: "bar"
+        }
+      }
+    });
+
+    const slackWebClient = {
+      emoji: {
+        list
+      }
+    };
+
+    const r = new RandomReactionHandler({
+      slackWebClient
+    });
+
+    r.addReaction = sinon.stub();
+
+    const msg = {
+      random: (v) => v[0],
+      message: {
+        room: "1",
+        id: "2"
+      }
+    };
+
+    await r.reactionRandom(msg);
+
+    expect(list.called).to.be.true;
+
+    expect(r.addReaction.called).to.be.true;
+    expect(r.addReaction.called).to.be.true;
+    expect(r.addReaction.calledWith('foo', msg.message.room, msg.message.id)).to.be.true;
   });
 });
