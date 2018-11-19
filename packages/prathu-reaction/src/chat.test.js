@@ -27,7 +27,7 @@ describe('chat', () => {
     callback(msg);
 
     expect(reaction.called).to.be.true;
-    expect(reaction.withArgs(msg.message, sinon.match.any, sinon.match.any).called).to.be.true;
+    expect(reaction.withArgs(msg, sinon.match.any, sinon.match.any).called).to.be.true;
   });
 
   it('should call hear', () => {
@@ -46,7 +46,7 @@ describe('chat', () => {
     callback(msg);
 
     expect(reaction.called).to.be.true;
-    expect(reaction.withArgs(msg.message, sinon.match.any, sinon.match.any).called).to.be.true;
+    expect(reaction.withArgs(msg, sinon.match.any, sinon.match.any).called).to.be.true;
   });
 });
 

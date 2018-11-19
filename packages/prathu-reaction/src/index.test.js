@@ -6,6 +6,11 @@ const { expect, assert } = require('chai');
 describe('index', () => {
   it('plugin', () => {
     const robot = {
+      adapter: {
+        client: {
+          web: {}
+        }
+      },
       hear: sinon.spy(),
       respond: sinon.spy(),
       router: {
