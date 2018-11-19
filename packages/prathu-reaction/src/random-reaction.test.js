@@ -42,22 +42,32 @@ describe('random-reaction', () => {
 
   });
 
-  xit('reaction should call random', () => {
+  it('reaction should call random', () => {
     const r = new RandomReactionHandler({});
 
-    sinon.spy(r, "random");
+    r.reactionNormal = sinon.spy();
+    r.reactionRandom = sinon.spy();
 
-    r.reaction(null, 0, 0);
+    r.random = sinon.spy(v => v);
+
+    r.reaction(null, 1, 0);
 
     expect(r.random.calledOnce).to.be.true;
-    expect(r.random.calledWith(0)).to.be.true;
+    expect(r.random.calledWith(1)).to.be.true;
+    expect(r.reactionRandom.called).to.be.true;
+    expect(r.reactionNormal.called).to.be.false;
 
-    r.random.resetHistory();
+    r.reactionNormal = sinon.spy();
+    r.reactionRandom = sinon.spy();
 
-    r.reaction(null, 0, 0);
+    r.random = sinon.spy(v => v);
+
+    r.reaction(null, 0, 1);
 
     expect(r.random.calledTwice).to.be.true;
     expect(r.random.calledWith(0)).to.be.true;
+    expect(r.reactionNormal.called).to.be.true;
+    expect(r.reactionRandom.called).to.be.false;
   });
 
   it('shouold react with a normal emoji', () => {
