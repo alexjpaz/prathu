@@ -8,7 +8,7 @@ slack_it = (robot, res, title, text) ->
 
 module.exports = (robot) ->
   robot.hear /fast/i, (msg) ->
-    robot.http('https://g4vlcenksd.execute-api.us-east-1.amazonaws.com/prod/sanic')
-      .post() (err, res, body) ->
+    robot.http('https://fa2yu62thb.execute-api.us-east-1.amazonaws.com/production/sanic')
+      .get() (err, res, body) ->
         text = JSON.parse(body).text
         msg.send(text)
