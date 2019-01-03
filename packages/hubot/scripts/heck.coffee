@@ -23,7 +23,7 @@ module.exports = (robot) ->
     /spook/i
   ].map (regex) ->
     robot.hear regex, (msg) ->
-      robot.http('https://g4vlcenksd.execute-api.us-east-1.amazonaws.com/prod/heck')
-        .post() (err, res, body) ->
+      robot.http('https://fa2yu62thb.execute-api.us-east-1.amazonaws.com/production/heck')
+        .get() (err, res, body) ->
           text = JSON.parse(body).text
           msg.send(text)
