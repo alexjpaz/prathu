@@ -6,8 +6,8 @@ const getRandomPoem = async () => {
 
   if(urls === null) {
     const { body } = await request
-      .get('https://www.reddit.com/r/ilikthebred/top.json?t=all&limit=100')
-      .set('User-Agent', 'Linux:com.alexjpaz.prathu:v1.0.0 (by /u/alexjpaz)')
+      .get('https://www.reddit.com/r/ilikthebred/top.json?t=all&limit=1000')
+      .set('User-Agent', 'Linux:com.alexjpaz.prathu:v1.0.1 (by /u/alexjpaz)')
     ;
 
     urls = body.data.children
