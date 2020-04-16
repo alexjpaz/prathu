@@ -13,6 +13,7 @@
     "prathu-example": "*",
     "prathu-poem": "*",
     "prathu-blank-bomb": "*",
+    "prathu-attitude": "*",
     "hubot": "^2.19.0",
     "hubot-cronjob": "^0.2.1",
     "hubot-diagnostics": "0.0.1",
