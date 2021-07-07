@@ -23,6 +23,7 @@ module.exports = (robot) ->
     /spook/i
   ].map (regex) ->
     robot.hear regex, (msg) ->
+      # https://github.com/alexjpaz/lambda-slackbot/blob/master/src/actions/heck.js
       robot.http('https://fa2yu62thb.execute-api.us-east-1.amazonaws.com/production/heck')
         .get() (err, res, body) ->
           text = JSON.parse(body).text
